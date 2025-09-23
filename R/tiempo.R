@@ -9,6 +9,9 @@
 #' what_time()
 #' what_time("en")
 what_time <- function(language = "es") {
+  if(language == "fr"){
+    stop("Not french please")
+  }
 
   rlang::arg_match0(language, c("es", "en"))
 
