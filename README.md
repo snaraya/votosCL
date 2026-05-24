@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# votosCL <img src="man/figures/my_sticker.png" align="right" width = "120px"/>
+# votosCL <img src="man/figures/my_sticker.png" align="right" width = "150px"/>
 
 <!-- badges: start -->
 
