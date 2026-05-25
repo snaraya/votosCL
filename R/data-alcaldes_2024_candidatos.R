@@ -4,28 +4,25 @@
 #' municipales chilenas de 2024, construida a partir de datos
 #' oficiales del Servicio Electoral de Chile (SERVEL).
 #'
-#' @format A data frame with 345 rows and 10 variables:
+#' @format Una base de datos con 2268 filas y 16 columnas.
 #' \describe{
-#'   \item{nro_region}{Número de región}
-#'   \item{region}{Nombre de la región}
-#'   \item{circunscripcion_senatorial}{Circunscripción senatorial}
-#'   \item{distrito}{Distrito}
-#'   \item{comuna}{Nombre de la comuna}
-#'   \item{circunscripcion_electoral}{Circunscripción electoral}
-#'   \item{local}{Local de votación}
-#'   \item{mesa}{Número de mesa}
-#'   \item{lista}{Lista electoral}
-#'   \item{pacto}{Pacto o coalición electoral}
-#'   \item{partido}{Partido político}
-#'   \item{nombres}{Nombres de candidato}
-#'   \item{primer_apellido}{Primer apellido del candidato}
-#'   \item{segundo_apellido}{Segundo apellido del candidato}
-#'   \item{votos}{Cantidad de votos}
-#'   \item{cargo}{Cargo al que postula}
-#'   \item{anio}{Año de elección}
-#'   \item{electo}{Fue o no electo (1 = Si)}
-#'   \item{porcentaje}{Porcentaje de votación}
-#'   \item{sexo}{Sexo del candidato}
+#'   \item{anio}{Año de elección.}
+#'   \item{id_region}{Número de región.}
+#'   \item{region}{Nombre de la región.}
+#'   \item{distrito}{Distrito.}
+#'   \item{comuna}{Nombre de la comuna.}
+#'   \item{candidato}{Nombre completo del candidato.}
+#'   \item{nombres}{Nombre del candidato.}
+#'   \item{primer_apellido}{Primer apellido del candidato.}
+#'   \item{segundo_apellido}{Segundo apellido del candidato.}
+#'   \item{sexo}{Sexo del candidato.}
+#'   \item{partido}{Partido político del candidato.}
+#'   \item{lista}{Lista electoral del candidato.}
+#'   \item{pacto}{Nombre del pacto o coalición electoral del candidato.}
+#'   \item{electo}{Dicotómica. Candidato fue (1) o no (0) electo en la elección.}
+#'   \item{votos}{Cantidad de votos obtenido por el candidato en la elección.}
+#'   \item{porcentaje}{Porcentaje de votación en relación al total comunal.}
+
 #' }
 #'
 #' @source Servicio Electoral de Chile (SERVEL)

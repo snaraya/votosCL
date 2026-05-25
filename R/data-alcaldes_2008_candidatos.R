@@ -1,10 +1,10 @@
-#' Candidaturas a alcalde en elecciones municipales 2012 en Chile
+#' Candidaturas a alcalde en elecciones municipales 2008 en Chile
 #'
 #' Base de datos de candidaturas a alcalde para las elecciones
-#' municipales chilenas de 2012, construida a partir de datos
+#' municipales chilenas de 2008, construida a partir de datos
 #' oficiales del Servicio Electoral de Chile (SERVEL).
 #'
-#' @format Una base de datos con 1.856 filas y 16 columnas.
+#' @format Una base de datos con 1.921 filas y 16 columnas.
 #' \describe{
 #'   \item{anio}{Año de elección.}
 #'   \item{id_region}{Número de región.}
@@ -29,6 +29,6 @@
 #' @references \url{https://www.servel.cl}
 #'
 #' @examples
-#' head(alcaldes_2012_candidatos)
+#' head(alcaldes_2008_candidatos)
 #'
-"alcaldes_2012_candidatos"
+"alcaldes_2008_candidatos"

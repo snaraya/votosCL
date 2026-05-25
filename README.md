@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# votosCL <img src="man/figures/my_sticker.png" align="right" width = "150px"/>
+# votosCL <img src="man/figures/my_sticker.png" align="right" width="150px"/>
 
 <!-- badges: start -->
 
@@ -55,13 +55,95 @@ library(votosCL)
 # Limpieza de datos hasta gráfico de barras stacked
 ```
 
-Resultados electorales por partido:
+**Resultados electorales por partido**
 
-Se seleccionan los partidos históricos más estables.
+De acuerdo al [Centro de Datos del
+SERVEL](https://www.servel.cl/centro-de-datos/estadisticas-de-datos-abiertos-4zg/estadisticas-de-partidos-politicos/total-de-afiliados-a-partidos-politicos/),
+los partidos políticos con más de 30.000 militantes son el Frente
+Amplio, Partido Nacional Libertario, Comunista de Chile, Partido de la
+Gente, Socialista de Chile, Renovación Nacional y Unión Demócrata
+Independiente. Con esta información, nosotros podemos ver la evolución
+de cada uno de esos partidos en las elecciones municipales. Pero ojo,
+mucho de esos **partidos son nuevos o relativamente nuevos**.
 
 ``` r
-# Limpieza de datos hasta gráfico
+
+# Primero, seleccionamos los partidos de interés:
+partidos <- c(
+  "frente amplio",
+  "nacional libertario",
+  "comunista de chile",
+  "de la gente",
+  "socialista de chile",
+  "renovacion nacional",
+  "union democrata independiente"
+)
+
+# Agrupamos por año y partido para calcular el total de votos obtenidos
+votos_partido <- elecciones_alcalde |> 
+  filter(partido %in% partidos) |> 
+  group_by(anio, partido) |> 
+  summarise(votos_partido = sum(votos)) 
+
+# Este paso nos permitirá tener el nombre del partido al final de la línea del gráfico
+etiquetas_24 <- votos_partido |> 
+  filter(anio == 2024) |> 
+  mutate(partido = str_to_title(partido))
+
+# Graficamos
+ggplot(data = votos_partido,
+       aes(
+         x = factor(anio),
+         y = votos_partido,
+         color = partido,
+         group = partido
+       )) +
+  geom_point(size = 3) +
+  geom_line(linewidth = 0.8) +
+  geom_text(
+    data = etiquetas_24,
+    aes(label = partido),
+    hjust = 0,
+    nudge_x = 0.2,
+    show.legend = FALSE,
+    color = "black",
+    family = "Roboto"
+  ) +
+  scale_y_continuous(labels = scales::comma) +
+  scale_color_manual(values = c(
+    "#ef476f",
+    "#f78c6b",
+    "#ffd166",
+    "#06d6a0",
+    "#118ab2",
+    "#073b4c"
+  )) +
+  labs(
+    y = "Número de votos obtenido",
+    x = "Año electoral",
+    title = "Total de votos obtenido por los partidos con más de 30.000 afiliados",
+    subtitle = "(Elecciones 2004 a 2024)",
+    caption = "Elaboración propia con datos del Servel."
+  ) +
+  theme_minimal(base_family = "Roboto") +
+  theme(
+    legend.position = "none",
+    plot.subtitle = element_text(hjust = 0.5),
+    plot.title.position = "panel",
+    plot.margin = margin(5.5, 150, 5.5, 5.5),
+    plot.caption = element_text(hjust = 1.7)
+  ) +
+  coord_cartesian(clip = "off")
 ```
+
+<img src="man/figures/plot_partidos.png">
+
+Aun así, hay que tener en consideración algunos factores, ya que las
+elecciones se han realizado bajo diferentes modalidades. Para las
+elecciones del 2004 y 2008, la inscripción era voluntaria y el voto
+obligatorio. Para las elecciones entre el 2012 y 2021, ésta era con
+inscripción automática y voto voluntario. En las últimas elecciones
+empezó a correr la inscripción automática y voto obligatorio.
 
 ## Fuente de los datos
 
