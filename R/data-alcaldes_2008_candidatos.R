@@ -16,11 +16,13 @@
 #'   \item{primer_apellido}{Primer apellido del candidato.}
 #'   \item{segundo_apellido}{Segundo apellido del candidato.}
 #'   \item{sexo}{Sexo del candidato.}
+#'   \item{rango_etario}{Rango etario del candidato.}
 #'   \item{partido}{Partido político del candidato.}
 #'   \item{lista}{Lista electoral del candidato.}
 #'   \item{pacto}{Nombre del pacto o coalición electoral del candidato.}
-#'   \item{electo}{Dicotómica. Candidato fue (1) o no (0) electo en la elección.}
 #'   \item{votos}{Cantidad de votos obtenido por el candidato en la elección.}
+#'   \item{electo}{SI si el candidato fue electo como alcalde en esa elección.}
+#'   \item{resultado_en_eleccion}{NO ELECTO si el candidato no fue electo en esa elección, ELECTO en el caso contrario.}
 #'   \item{porcentaje}{Porcentaje de votación en relación al total comunal.}
 
 #' }
